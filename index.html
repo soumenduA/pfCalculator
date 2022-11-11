@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #aaaaaa;
+        text-align: center;
+        padding: 8px 4px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      input {
+        width: 12vw;
+      }
+      button{
+        border-width: 1px;
+        border-radius: 15px;
+        height: auto;
+        width: auto;
+        margin: 0 5px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>PF Calculator Table</h2>
+
+    <table>
+      <form action="" id="pf_form">
+        <tr>
+          <th>Month</th>
+          <th>Opening Bal</th>
+          <th>Before 15th</th>
+          <th>After 15th</th>
+          <th>PF Adv</th>
+          <th>PF Reco</th>
+          <th>int p.a.</th>
+        </tr>
+        <tr>
+          <!-- <td><input type="text" id="month" /></td> -->
+          <td>
+            <select id="month">
+              <option value="apr">Apr</option>
+              <option value="may">May</option>
+              <option value="jun">Jun</option>
+              <option value="jul">Jul</option>
+              <option value="aug">Aug</option>
+              <option value="sep">Sep</option>
+              <option value="oct">Oct</option>
+              <option value="nov">Nov</option>
+              <option value="dec">Dec</option>
+              <option value="jan">Jan</option>
+              <option value="feb">Feb</option>
+              <option value="mar">Mar</option>
+            </select>
+          </td>
+          <td><input type="text" id="opening-bal" /></td>
+          <td><input type="text" id="before-15" /></td>
+          <td><input type="text" id="after-15" /></td>
+          <td><input type="text" id="pf-adv" /></td>
+          <td><input type="text" id="pf-reco" /></td>
+          <td><input type="text" id="int-pa" /></td>
+        </tr>
+      </form>
+    </table>
+    <br />
+    <button id="addToTable_btn">Add to table</button>
+    <button id="next_btn">Next month</button>
+    <br />
+    <br />
+    <table id="PF_Table">
+      <tr>
+        <th>Month</th>
+        <th>Opening Balance</th>
+        <th>Before 15th</th>
+        <th>After 15th</th>
+        <th>PF Adv</th>
+        <th>PF Reco</th>
+        <th>Lowest Payment</th>
+        <th>int p.a.</th>
+        <th>Interest</th>
+        <th>Closing Balance</th>
+      </tr>
+    </table>
+    <br />
+    <button id="btn-export">Export to Excel</button>
+    <script src="script.js"></script>
+  </body>
+</html>
