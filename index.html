@@ -29,7 +29,7 @@
       }
       button{
         border-width: 1px;
-        border-radius: 15px;
+        border-radius: 10px;
         height: auto;
         width: auto;
         margin: 0 5px;
@@ -44,14 +44,38 @@
       <form action="" id="pf_form">
         <tr>
           <th>Month</th>
-          <th>Opening <br> Balance</th>
-          <th>Contribution <br> Before 15th</th>
-          <th>Contribution <br> After 15th</th>
-          <th>PF Adv <br> Before 15th</th>
-          <th>PF Adv <br> After 15th</th>
-          <th>PF Reco <br> Before 15th</th>
-          <th>PF Reco <br> After 15th</th>
-          <th>Interest Rate <br> (Per Annum)</th>
+          <th>
+            Opening <br />
+            Balance
+          </th>
+          <th>
+            Contribution <br />
+            Before 15th
+          </th>
+          <th>
+            Contribution <br />
+            After 15th
+          </th>
+          <th>
+            PF Adv <br />
+            Before 15th
+          </th>
+          <th>
+            PF Adv <br />
+            After 15th
+          </th>
+          <th>
+            PF Reco <br />
+            Before 15th
+          </th>
+          <th>
+            PF Reco <br />
+            After 15th
+          </th>
+          <th>
+            Interest Rate <br />
+            (Per Annum)
+          </th>
         </tr>
         <tr>
           <!-- <td><input type="text" id="month" /></td> -->
@@ -91,17 +115,55 @@
     <table id="PF_Table">
       <tr>
         <th>Month</th>
-        <th>Opening <br class="header-line-breaker"> Balance</th>
-        <th>Contribution <br class="header-line-breaker"> Before 15th</th>
-        <th>Contribution <br class="header-line-breaker"> After 15th</th>
-        <th>PF Adv <br class="header-line-breaker"> Before 15th</th>
-        <th>PF Adv <br class="header-line-breaker"> After 15th</th>
-        <th>PF Reco <br class="header-line-breaker"> Before 15th</th>
-        <th>PF Reco <br class="header-line-breaker"> After 15th</th>
-        <th>Lowest Payment</th>
-        <th>int p.a.</th>
+        <th>
+          Opening <br class="header-line-breaker" />
+          Balance
+        </th>
+        <th>
+          Contribution <br class="header-line-breaker" />
+          Before 15th
+        </th>
+        <th>
+          Contribution <br class="header-line-breaker" />
+          After 15th
+        </th>
+        <th>
+          PF Adv <br class="header-line-breaker" />
+          Before 15th
+        </th>
+        <th>
+          PF Adv <br class="header-line-breaker" />
+          After 15th
+        </th>
+        <th>
+          PF Reco <br class="header-line-breaker" />
+          Before 15th
+        </th>
+        <th>
+          PF Reco <br class="header-line-breaker" />
+          After 15th
+        </th>
+        <th>
+          Lowest <br class="header-line-breaker" />
+          Payment
+        </th>
+        <th>
+          Interest Rate <br />
+          (Per Annum)
+        </th>
         <th>Interest</th>
-        <th>Closing <br class="header-line-breaker"> Balance</th>
+        <th>
+          Closing <br class="header-line-breaker" />
+          Balance
+        </th>
+      </tr>
+      <tr>
+        <th colspan="2">Closing Balance</th>
+        <th colspan="2" id="closing-bal"></th>
+        <th colspan="2">Interest</th>
+        <th colspan="2" id="total-int-sum"></th>
+        <th colspan="2">Total</th>
+        <th colspan="2" id="total-bal"></th>
       </tr>
     </table>
     <br />
