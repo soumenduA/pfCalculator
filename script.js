@@ -1,6 +1,8 @@
 $(document).ready(() => {
   let opBal = 0;
   let clBal = 0;
+  let intrSum = 0;
+  let totalSum = 0;
   const months = [
     { month: "apr", isAddedToTable: false },
     { month: "may", isAddedToTable: false },
@@ -24,7 +26,7 @@ $(document).ready(() => {
     }
     return null;
   };
-  
+
   const getCurrentMonthIndex = () => {
     // TODO
   }
@@ -81,9 +83,11 @@ $(document).ready(() => {
             const pfAdvAft = parseFloat($("#pf-adv-aft").val() || 0, 2);
             const lwstPayment = opBal + bfr_15 + pfRecoBfr - pfAdvBfr;
             const intr = (lwstPayment * intPA) / 1200;
+            intrSum += intr;
             clBal = opBal + bfr_15 + aft_15 + pfRecoBfr + pfRecoAft - pfAdvBfr - pfAdvAft;
+            totalSum = clBal + intrSum;
             console.log({ clBal, opBal, intr, bfr_15, aft_15 });
-            $("#PF_Table tr:last").after(
+            $("#PF_Table tr:last").before(
               `<tr id=${month.toLowerCase()}>
               <td>${month.toUpperCase()}</td>
               <td>${opBal}</td>
@@ -100,6 +104,11 @@ $(document).ready(() => {
               </tr>`
             ); // two places after decimal truncation is handled using string regex matcher
             months[index].isAddedToTable = true;
+// populate total row
+            $("#closing-bal").html(clBal);
+            $("#total-int-sum").html(intrSum.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]);
+            $("#total-bal").html(totalSum.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]);
+// populate total row End
           } catch (err) {
             window.alert("Something went WRONG! Please check if all fields are filled.");
             // console.error(err);
