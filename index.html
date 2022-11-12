@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
     <style>
       table {
         font-family: arial, sans-serif;
@@ -25,7 +25,7 @@
         background-color: #dddddd;
       }
       input {
-        width: 12vw;
+        width: 10vw;
       }
       button{
         border-width: 1px;
@@ -44,17 +44,19 @@
       <form action="" id="pf_form">
         <tr>
           <th>Month</th>
-          <th>Opening Bal</th>
-          <th>Before 15th</th>
-          <th>After 15th</th>
-          <th>PF Adv</th>
-          <th>PF Reco</th>
-          <th>int p.a.</th>
+          <th>Opening <br> Balance</th>
+          <th>Contribution <br> Before 15th</th>
+          <th>Contribution <br> After 15th</th>
+          <th>PF Adv <br> Before 15th</th>
+          <th>PF Adv <br> After 15th</th>
+          <th>PF Reco <br> Before 15th</th>
+          <th>PF Reco <br> After 15th</th>
+          <th>Interest Rate <br> (Per Annum)</th>
         </tr>
         <tr>
           <!-- <td><input type="text" id="month" /></td> -->
           <td>
-            <select id="month">
+            <!-- <select id="month">
               <option value="apr">Apr</option>
               <option value="may">May</option>
               <option value="jun">Jun</option>
@@ -67,13 +69,16 @@
               <option value="jan">Jan</option>
               <option value="feb">Feb</option>
               <option value="mar">Mar</option>
-            </select>
+            </select> -->
+            <div id="month">APR</div>
           </td>
           <td><input type="text" id="opening-bal" /></td>
           <td><input type="text" id="before-15" /></td>
           <td><input type="text" id="after-15" /></td>
-          <td><input type="text" id="pf-adv" /></td>
-          <td><input type="text" id="pf-reco" /></td>
+          <td><input type="text" id="pf-adv-bfr" /></td>
+          <td><input type="text" id="pf-adv-aft" /></td>
+          <td><input type="text" id="pf-reco-bfr" /></td>
+          <td><input type="text" id="pf-reco-aft" /></td>
           <td><input type="text" id="int-pa" /></td>
         </tr>
       </form>
@@ -86,15 +91,17 @@
     <table id="PF_Table">
       <tr>
         <th>Month</th>
-        <th>Opening Balance</th>
-        <th>Before 15th</th>
-        <th>After 15th</th>
-        <th>PF Adv</th>
-        <th>PF Reco</th>
+        <th>Opening <br class="header-line-breaker"> Balance</th>
+        <th>Contribution <br class="header-line-breaker"> Before 15th</th>
+        <th>Contribution <br class="header-line-breaker"> After 15th</th>
+        <th>PF Adv <br class="header-line-breaker"> Before 15th</th>
+        <th>PF Adv <br class="header-line-breaker"> After 15th</th>
+        <th>PF Reco <br class="header-line-breaker"> Before 15th</th>
+        <th>PF Reco <br class="header-line-breaker"> After 15th</th>
         <th>Lowest Payment</th>
         <th>int p.a.</th>
         <th>Interest</th>
-        <th>Closing Balance</th>
+        <th>Closing <br class="header-line-breaker"> Balance</th>
       </tr>
     </table>
     <br />
