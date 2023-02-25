@@ -8,6 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
     <style>
+      body {
+        background-color: rgb(149, 209, 209);
+      }
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
@@ -24,24 +27,53 @@
       tr:nth-child(even) {
         background-color: #dddddd;
       }
-      input {
-        width: 10vw;
+      input,
+      select {
+        width: 85%;
+        max-width: 50vw;
       }
-      button{
-        border-width: 1px;
-        border-radius: 10px;
+      button {
+        border-radius: 20px;
+        border: 1px solid whitesmoke;
+
         height: auto;
         width: auto;
         margin: 0 5px;
         padding: 10px;
+        background-color: rgb(30, 120, 204);
+        color: antiquewhite;
       }
     </style>
   </head>
   <body>
-    <h2>PF Calculator Table</h2>
+    <div style="display: flex; justify-content: space-between">
+      <h1>PF Calculator</h1>
+    </div>
 
     <table>
       <form action="" id="pf_form">
+        <tr>
+          <td colspan="2">NAME OF SCHOOL</td>
+          <td colspan="3">
+            <!-- <input type="text" id="school-name-inpt" /> -->
+            <select name="school-name" id="school-name-inpt"></select>
+          </td>
+          <td colspan="2">ADDRESS</td>
+          <td colspan="2">
+            <!-- <input type="text" id="school-address-inpt" /> -->
+            <select name="school-address" id="school-address-inpt"></select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">Name of Employee</td>
+          <td colspan="3"><input type="text" id="emp-name-inpt" /></td>
+          <td colspan="2">Designation</td>
+          <td colspan="2"><input type="text" id="emp-designation-inpt" /></td>
+        </tr>
+        <!-- <tr>
+          <td colspan="3">Designation</td>
+          <td colspan="6"><input type="text" id="emp-designation" /></td>
+        </tr> -->
         <tr>
           <th>Month</th>
           <th>
@@ -108,11 +140,38 @@
       </form>
     </table>
     <br />
-    <button id="addToTable_btn">Add to table</button>
-    <button id="next_btn">Next month</button>
+
+    <button id="addToTable_btn">+ Add to table</button>
+    <button id="next_btn">Next month ></button>
+
     <br />
     <br />
     <table id="PF_Table">
+      <tr>
+        <td colspan="12">PROVIDENT FUND LEDGER INDIVIDUAL</td>
+      </tr>
+      <tr>
+        <td colspan="2">NAME OF SCHOOL</td>
+        <td colspan="10" id="school-name"></td>
+      </tr>
+      <tr>
+        <td colspan="2">ADDRESS</td>
+        <td colspan="10" id="school-address"></td>
+      </tr>
+      <tr>
+        <td colspan="2">Financial Year</td>
+        <td colspan="2">2021-22</td>
+        <td colspan="2">Assessment Year</td>
+        <td colspan="2">2022-23</td>
+        <td colspan="2">Interest @ p.a.</td>
+        <td colspan="2">8.7</td>
+      </tr>
+      <tr>
+        <td colspan="2">Name of Employee</td>
+        <td colspan="5" id="emp-name"></td>
+        <td colspan="2">Designation</td>
+        <td colspan="5" id="emp-designation"></td>
+      </tr>
       <tr>
         <th>Month</th>
         <th>
@@ -148,7 +207,7 @@
           Payment
         </th>
         <th>
-          Interest Rate <br />
+          Interest Rate <br class="header-line-breaker" />
           (Per Annum)
         </th>
         <th>Interest</th>
