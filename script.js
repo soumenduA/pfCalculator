@@ -3,6 +3,7 @@ $(document).ready(() => {
   let clBal = 0;
   let intrSum = 0;
   let totalSum = 0;
+  var fileName = "";
   const months = [
     { month: "apr", isAddedToTable: false },
     { month: "may", isAddedToTable: false },
@@ -20,7 +21,6 @@ $(document).ready(() => {
 
   const getNextMonth = (currMonth) => {
     const index = months.findIndex((ele) => ele.month === currMonth);
-    console.log({ index });
     if (index >= 0 && index < months.length - 1) {
       return months[index + 1].month;
     }
@@ -31,49 +31,56 @@ $(document).ready(() => {
     // TODO
   };
   const schools = [
-    { name: "None", value: "None" , addr: "none"},
+    { name: "None", value: "None", addr: "none" },
     {
       name: "SANTOSHPUR GOVT. COLONY NETAJI SUBHAS VIDYALAYA(H.S)",
-      value: "SANTOSHPUR_GOVT",
-      addr: "P.O.-SANTOSHPUR(M), P.S.-MAHASHTALA, DIST.-24PGS(SOUTH), PIN - 700044"
+      id: "SANTOSHPUR_GOVT",
+      value: "SANTOSHPUR GOVT. COLONY NETAJI SUBHAS VIDYALAYA(H.S)",
+      addr: "P.O.-SANTOSHPUR(M), P.S.-MAHASHTALA, DIST.-24PGS(SOUTH), PIN - 700044",
     },
   ];
 
-  schools.map((ele) => {
+  schools.forEach((ele) => {
     $("#school-name-inpt").append(`<option value="${ele.value}">
       ${ele.name}
     </option>`);
-    $("#school-address-inpt").append(`<option value="${ele.addr}">
-      ${ele.addr}
-    </option>`);
+  });
+
+  $("#school-address-inpt").append(`<option value="None">
+    ${"None"}
+  </option>`);
+
+  $("#school-name-inpt").change(function (event) {
+    schools.forEach((ele) => {
+      if (ele.value === event.target.value) {
+        $("#school-address-inpt").append(`<option value="${ele.addr}">
+          ${ele.addr}
+        </option>`);
+      }
+    });
+    $("#school-name").html(event.target.value);
+  });
+
+  $("#school-address-inpt").change(function (event) {
+    $("#school-address").html(event.target.value);
   });
 
   $("#emp-name-inpt").change(function (event) {
-    $("#emp-name").html(event.target.value);
+    $("#emp-name").html(event.target.value.toUpperCase());
+    fileName = event.target.value.toUpperCase();
   });
 
   $("#emp-designation-inpt").change(function (event) {
-    $("#emp-designation").html(event.target.value);
+    $("#emp-designation").html(event.target.value.toUpperCase());
   });
 
   $("#btn-export").click(function () {
-    console.log("export clicked");
     $(".header-line-breaker").remove();
     $("#PF_Table").table2excel({
       // exclude CSS class
       exclude: ".noExl",
       name: "Worksheet Name",
-      filename: "EmployeeName", //do not include extension
-      fileext: ".xls", // file extension
-      exclude_img: true,
-      exclude_links: true,
-      exclude_inputs: true,
-    });
-    $("#PF_Table").table2excel({
-      // exclude CSS class
-      exclude: ".noExl",
-      name: "Worksheet Name",
-      filename: "Employee", //do not include extension
+      filename: `${fileName}`, //do not include extension
       fileext: ".xls", // file extension
       exclude_img: true,
       exclude_links: true,
@@ -90,11 +97,10 @@ $(document).ready(() => {
     ); //change for making month uneditable
     if (months[index].isAddedToTable) {
       const nextMonth = getNextMonth(month.toLowerCase());
-      console.log({ clBal, opBal, nextMonth });
       opBal = clBal;
       $("#opening-bal").val(opBal);
       nextMonth
-        ? // ? $("#month").val(nextMonth)
+        ?
           $("#month").html(nextMonth.toUpperCase())
         : window.alert(
             "Done for the FY! Please reload the page to enter new data."
@@ -105,7 +111,6 @@ $(document).ready(() => {
   $("#addToTable_btn").click(function () {
     // const month = $("#month").val();
     const month = $("#month").html(); //change for making month uneditable
-    console.log("adding row to table", month);
     const index = months.findIndex(
       (ele) => ele.month.toLowerCase() === month.toLowerCase()
     ); //change for making month uneditable
@@ -132,7 +137,6 @@ $(document).ready(() => {
             pfAdvBfr -
             pfAdvAft;
           totalSum = clBal + intrSum;
-          console.log({ clBal, opBal, intr, bfr_15, aft_15 });
           $("#PF_Table tr:last").before(
             `<tr id=${month.toLowerCase()}>
               <td>${month.toUpperCase()}</td>
