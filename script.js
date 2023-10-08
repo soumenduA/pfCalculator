@@ -31,7 +31,7 @@ $(document).ready(() => {
     // TODO
   };
   const schools = [
-    { name: "None", value: "None", addr: "none" },
+    { name: "Select", value: "None", addr: "" },
     {
       name: "SANTOSHPUR GOVT. COLONY NETAJI SUBHAS VIDYALAYA(H.S)",
       id: "SANTOSHPUR_GOVT",
@@ -40,6 +40,41 @@ $(document).ready(() => {
     },
   ];
 
+  const years = [
+    { fY: "Select", aY: "Select" },
+    { fY: "2021-22", aY: "2022-23" },
+    { fY: "2022-23", aY: "2023-24" },
+    { fY: "2023-24", aY: "2024-25" },
+    { fY: "2024-25", aY: "2025-26" },
+    { fY: "2025-26", aY: "2026-27" },
+    { fY: "2026-27", aY: "2027-28" },
+    { fY: "2027-28", aY: "2028-29" },
+    { fY: "2028-29", aY: "2030-31" },
+    { fY: "2030-31", aY: "2031-32" },
+    { fY: "2031-32", aY: "2032-33" },
+  ];
+  // Years - Begin
+  years.forEach((ele, idx) => {
+    $("#fin-year-inpt").append(`<option value="${ele.fY}">
+      ${ele.fY}
+    </option>`);
+  });
+
+  $("#fin-year-inpt").change(function (event) {
+    if (event.target.value === "Select") {
+      $("#fin-year").html("");
+      $("#asse-year").html("");
+    } else {
+      $("#fin-year").html(event.target.value);
+      years.forEach((ele) => {
+        if (ele.fY === event.target.value) {
+          $("#asse-year").html(ele.aY);
+        }
+      });
+    }
+  });
+  // Years - End
+  // School - Begin
   schools.forEach((ele) => {
     $("#school-name-inpt").append(`<option value="${ele.value}">
       ${ele.name}
@@ -47,10 +82,16 @@ $(document).ready(() => {
   });
 
   $("#school-address-inpt").append(`<option value="None">
-    ${"None"}
+    ${"Select"}
   </option>`);
 
   $("#school-name-inpt").change(function (event) {
+    $("#school-address-inpt")
+      .find("option")
+      .remove()
+      .end()
+      .append('<option value="">Select</option>');
+    $("#school-address").html("");
     schools.forEach((ele) => {
       if (ele.value === event.target.value) {
         $("#school-address-inpt").append(`<option value="${ele.addr}">
@@ -58,12 +99,18 @@ $(document).ready(() => {
         </option>`);
       }
     });
-    $("#school-name").html(event.target.value);
+
+    event.target.value === "None"
+      ? $("#school-name").html("")
+      : $("#school-name").html(event.target.value);
   });
 
   $("#school-address-inpt").change(function (event) {
-    $("#school-address").html(event.target.value);
+    event.target.value === "None"
+      ? $("#school-address").html("")
+      : $("#school-address").html(event.target.value);
   });
+  // School - End
 
   $("#emp-name-inpt").change(function (event) {
     $("#emp-name").html(event.target.value.toUpperCase());
@@ -100,10 +147,9 @@ $(document).ready(() => {
       opBal = clBal;
       $("#opening-bal").val(opBal);
       nextMonth
-        ?
-          $("#month").html(nextMonth.toUpperCase())
+        ? $("#month").html(nextMonth.toUpperCase())
         : window.alert(
-            "Done for the FY! Please reload the page to enter new data."
+            "Done for the FY! Please download and reload the page to enter new data."
           );
     } else window.alert(`Please add ${month.toUpperCase()} data to table before going to next month.`);
   });
