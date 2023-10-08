@@ -10,6 +10,10 @@
     <style>
       body {
         background-color: rgb(149, 209, 209);
+        background-image: url("bg_image_1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
       }
       table {
         font-family: arial, sans-serif;
@@ -53,23 +57,23 @@
     <table>
       <form action="" id="pf_form">
         <tr>
-          <td colspan="2">NAME OF SCHOOL</td>
+          <th colspan="2">NAME OF SCHOOL</th>
           <td colspan="3">
             <!-- <input type="text" id="school-name-inpt" /> -->
             <select name="school-name" id="school-name-inpt"></select>
           </td>
-          <td colspan="2">ADDRESS</td>
+          <th colspan="2">ADDRESS</th>
           <td colspan="2">
             <!-- <input type="text" id="school-address-inpt" /> -->
             <select name="school-address" id="school-address-inpt"></select>
           </td>
         </tr>
         <tr>
-          <td colspan="1">Name of Employee</td>
+          <th colspan="1">Name of Employee</th>
           <td colspan="3"><input type="text" id="emp-name-inpt" /></td>
-          <td colspan="1">Designation</td>
+          <th colspan="1">Designation</th>
           <td colspan="2"><input type="text" id="emp-designation-inpt" /></td>
-          <td colspan="1">Financial Year</td>
+          <th colspan="1">Financial Year</th>
           <td colspan="1">
             <select name="fin-year" id="fin-year-inpt"></select>
           </td>
@@ -152,28 +156,28 @@
     <br />
     <table id="PF_Table">
       <tr>
-        <td colspan="12">PROVIDENT FUND LEDGER INDIVIDUAL</td>
+        <th colspan="12">PROVIDENT FUND LEDGER INDIVIDUAL</th>
       </tr>
       <tr>
-        <td colspan="2">NAME OF SCHOOL</td>
+        <th colspan="2">NAME OF SCHOOL</th>
         <td colspan="10" id="school-name"></td>
       </tr>
       <tr>
-        <td colspan="2">ADDRESS</td>
+        <th colspan="2">ADDRESS</th>
         <td colspan="10" id="school-address"></td>
       </tr>
       <tr>
-        <td colspan="2">Financial Year</td>
+        <th colspan="2">Financial Year</th>
         <td colspan="2" id="fin-year"></td>
-        <td colspan="2">Assessment Year</td>
+        <th colspan="2">Assessment Year</th>
         <td colspan="2" id="asse-year"></td>
-        <td colspan="2">Interest @ p.a.</td>
+        <th colspan="2">Interest @ p.a.</th>
         <td colspan="2"></td>
       </tr>
       <tr>
-        <td colspan="2">Name of Employee</td>
+        <th colspan="2">Name of Employee</th>
         <td colspan="5" id="emp-name"></td>
-        <td colspan="2">Designation</td>
+        <th colspan="2">Designation</th>
         <td colspan="5" id="emp-designation"></td>
       </tr>
       <tr>

@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  // $("body").css({ "background-image": "url('bg_image_7')" });
   let opBal = 0;
   let clBal = 0;
   let intrSum = 0;
