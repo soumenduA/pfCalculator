@@ -37,12 +37,38 @@ $(document).ready(() => {
       name: "SANTOSHPUR GOVT. COLONY NETAJI SUBHAS VIDYALAYA(H.S)",
       id: "SANTOSHPUR_GOVT",
       value: "SANTOSHPUR GOVT. COLONY NETAJI SUBHAS VIDYALAYA(H.S)",
-      addr: "P.O.-SANTOSHPUR(M), P.S.-MAHASHTALA, DIST.-24PGS(SOUTH), PIN - 700044",
+      addr: "P.O.-SANTOSHPUR(M), P.S.-MAHESHTALA, DIST.-24PGS(SOUTH), PIN - 700142",
     },
   ];
 
   const years = [
     { fY: "Select", aY: "Select" },
+    { fY: "2095-96", aY: "2096-97" },
+    { fY: "2096-97", aY: "2097-98" },
+    { fY: "2097-98", aY: "2098-99" },
+    { fY: "2098-99", aY: "2099-00" },
+    { fY: "2099-00", aY: "2000-01" },
+    { fY: "2000-01", aY: "2001-02" },
+    { fY: "2001-02", aY: "2002-03" },
+    { fY: "2002-03", aY: "2003-04" },
+    { fY: "2003-04", aY: "2004-05" },
+    { fY: "2004-05", aY: "2005-06" },
+    { fY: "2005-06", aY: "2006-07" },
+    { fY: "2006-07", aY: "2007-08" },
+    { fY: "2007-08", aY: "2008-09" },
+    { fY: "2008-09", aY: "2009-10" },
+    { fY: "2009-10", aY: "2010-11" },
+    { fY: "2010-11", aY: "2011-12" },
+    { fY: "2011-12", aY: "2012-13" },
+    { fY: "2012-13", aY: "2013-14" },
+    { fY: "2013-14", aY: "2014-15" },
+    { fY: "2014-15", aY: "2015-16" },
+    { fY: "2015-16", aY: "2016-17" },
+    { fY: "2016-17", aY: "2017-18" },
+    { fY: "2017-18", aY: "2018-19" },
+    { fY: "2018-19", aY: "2019-20" },
+    { fY: "2019-20", aY: "2020-21" },
+    { fY: "2020-21", aY: "2021-22" },
     { fY: "2021-22", aY: "2022-23" },
     { fY: "2022-23", aY: "2023-24" },
     { fY: "2023-24", aY: "2024-25" },
@@ -123,6 +149,7 @@ $(document).ready(() => {
   });
 
   $("#btn-export").click(function () {
+    $("#total-bal").html(Math.round(totalSum).toString());
     $(".header-line-breaker").remove();
     $("#PF_Table").table2excel({
       // exclude CSS class
